@@ -19,7 +19,7 @@
   <parent>
     <artifactId>tajo</artifactId>
     <groupId>kr.ac.korea.dbserver</groupId>
-    <version>0.2.0-SNAPSHOT</version>
+    <version>0.1.8-SNAPSHOT</version>
   </parent>
   <artifactId>tajo-core</artifactId>
   <packaging>jar</packaging>

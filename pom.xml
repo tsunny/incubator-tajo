@@ -21,7 +21,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>kr.ac.korea.dbserver</groupId>
   <artifactId>tajo</artifactId>
-  <version>0.2.0-SNAPSHOT</version>
+  <version>0.1.8-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Tajo</name>
   <description>A Distributed Data Warehouse System</description>
@@ -44,7 +44,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <hadoop.version>2.0.1-SNAPSHOT</hadoop.version>
-    <tajo.version>0.2.0-SNAPSHOT</tajo.version>
+    <tajo.version>0.1.8-SNAPSHOT</tajo.version>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
