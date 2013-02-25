@@ -183,7 +183,7 @@
                 
         <div id="bodyColumn"  class="span9" >
                                   
-            <div class="section"><h2>Build Tajo from Source Code<a name="Build_Tajo_from_Source_Code"></a></h2><p>Download the source code and build Tajo as follows:</p><div><pre>$ git clone git://github.com/tajo-project/tajo.git
+            <div class="section"><h2>Prerequisites<a name="Prerequisites"></a></h2><ul><li>Hadoop 2.0.2-alpha or higher</li><li>Java 1.6 or higher</li></ul></div><div class="section"><h2>Build Tajo from Source Code<a name="Build_Tajo_from_Source_Code"></a></h2><p>Download the source code and build Tajo as follows:</p><div><pre>$ git clone git://github.com/tajo-project/tajo.git
 $ cd tajo
 $ mvn package -DskipTests -Ddisk -Ptar
 $ ls tajo-dist/target/tajo-x.y.z.tar.gz</pre></div><p>If you want to know the build instruction in more detail, refer to <a href="./build.html">Build Instruction</a>.</p></div><div class="section"><h2>Unpack tarball<a name="Unpack_tarball"></a></h2><p>You should unpack the tarball (refer to build instruction).</p><div><pre>$ tar xzvf tajo-0.2.0-SNAPSHOT.tar.gz</pre></div><p>This will result in the creation of subdirectory named tajo-x.y.z-SNAPSHOT. You MUST copy this directory into the same directory on all yarn cluster nodes.</p></div><div class="section"><h2>Configuration<a name="Configuration"></a></h2><p>First of all, you need to set the environment variables for your Hadoop cluster and Tajo.</p><div><pre>export JAVA_HOME=/usr/lib/jvm/openjdk-1.7.x
@@ -205,8 +205,16 @@ export TAJO_HOME=&lt;tajo-install-dir&gt;</pre></div><p>Tajo requires an auxilia
 &lt;/property&gt;</pre></div><p>Likewise, you should copy some jar files to the hadoop library dir.</p><div><pre>cp $TAJO_HOME/tajo-common-x.y.z.jar $HADOOP_HOME/share/yarn/lib
 cp $TAJO_HOME/tajo-catalog-common-x.y.z.jar $HADOOP_HOME/share/yarn/lib
 cp $TAJO_HOME/tajo-core-pullserver-x.y.z.jar $HADOOP_HOME/share/yarn/lib
-cp $TAJO_HOME/tajo-core-storage-x.y.z.jar $HADOOP_HOME/share/yarn/lib</pre></div></div><div class="section"><h2>Running Tajo<a name="Running_Tajo"></a></h2><p>Before launching the tajo, you should create the tajo root dir and set the permission as follows:</p><div><pre>$HADOOP_HOME/bin/hadoop fs -mkdir       /tajo
-$HADOOP_HOME/bin/hadoop fs -chmod g+w   /tajo</pre></div><p>To launch the tajo master, execute start-tajo.sh.</p><div><pre>$TAJO_HOME/bin/start-tajo.sh</pre></div><p>After then, you can use tajo-cli to access the command line interface of Tajo.</p><div><pre>$TAJO_HOME/bin/tajo cli</pre></div></div>
+cp $TAJO_HOME/tajo-core-storage-x.y.z.jar $HADOOP_HOME/share/yarn/lib</pre></div><p>Copy $<a name="TAJO_HOME">TAJO_HOME</a>/conf/tajo-site.xml.templete to tajo-site.xml. Then, add the following configs to your tajo-site.xml. Change <i>hostname</i> and <i>port</i> to your namenode address.</p><div><pre>  &lt;property&gt;
+    &lt;name&gt;tajo.rootdir&lt;/name&gt;
+    &lt;value&gt;hdfs://hostname:port/tajo&lt;/value&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;tajo.cluster.distributed&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;</pre></div><p>If you want know configuration in more detail, refer to <a href="./configuration.html">Configuration Guide</a>.</p></div><div class="section"><h2>Running Tajo<a name="Running_Tajo"></a></h2><p>Before launching the tajo, you should create the tajo root dir and set the permission as follows:</p><div><pre>$HADOOP_HOME/bin/hadoop fs -mkdir       /tajo
+$HADOOP_HOME/bin/hadoop fs -chmod g+w   /tajo</pre></div><p>To launch the tajo master, execute start-tajo.sh.</p><div><pre>$TAJO_HOME/bin/start-tajo.sh</pre></div><p>After then, you can use tajo-cli to access the command line interface of Tajo.</p><div><pre>$TAJO_HOME/bin/tajo cli</pre></div><p>(still working)</p></div>
                   </div>
             </div>
           </div>
